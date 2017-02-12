@@ -1,0 +1,80 @@
+<!--
+  Generated template for the NewPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar primary>
+    <ion-title>new</ion-title>
+
+
+    <ion-buttons end>
+
+      <button (click)="loadnewPosts()" >
+        <ion-icon name="refresh"></ion-icon>
+        refresh
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card *ngFor="let post of postsArray"  (click)="viewPost(post)"> <!--*ngFor="let post of postsArray" *virtualItem="#item"  -->
+
+
+    <ion-card-content>
+      <ion-card-title>
+        <h2>{{post.title}}</h2>
+        <p><ion-icon name='person' primary></ion-icon> Posted by {{post.author}}</p>
+
+        <ion-nav-buttons>
+
+        </ion-nav-buttons>
+      </ion-card-title>
+      <img *ngIf="post.imgUrl" src="{{post.imgUrl}}"/>
+
+    </ion-card-content>
+
+    <ion-row >
+      <!--Shows the net earned payout for this post-->
+      <ion-col>
+        <button primary clear small >
+          <ion-icon name='cash'></ion-icon>
+          {{post.earned}}
+        </button>
+
+      </ion-col>
+
+      <!--Contains the votes and comments icons-->
+      <!--to add: comments page view triggered by pressing the chat box-->
+      <ion-col end>
+        <button primary clear small >
+          <ion-icon name='arrow-up'></ion-icon>
+          {{post.votes}}
+        </button>
+        <!--Comments -->
+        <button primary clear small >
+          <ion-icon name='chatboxes'></ion-icon>
+          {{post.comments}}
+        </button>
+
+      </ion-col>
+      <!-- end buttons -->
+    </ion-row>
+  </ion-card>
+  <!-- end card -->
+   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more posts...">
+
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+

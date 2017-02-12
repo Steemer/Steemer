@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-navbar primary >
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button (click)="refreshPrice()" >
+        <ion-icon name="refresh"></ion-icon>
+        refresh
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="home" >
+
+  <ion-card >
+  <ion-card-header >
+
+    STEEM
+
+
+  </ion-card-header>
+
+  <ion-list>
+    <button ion-item>
+      <ion-icon name="bitcoin" item-left primary></ion-icon>
+      BTC Price :{{steem.last}}
+    </button>
+    <ion-item>
+      <ion-icon name="cash" item-left primary></ion-icon>
+      Dollar Price:       {{steemDollarVal |number:'.2'}}
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="arrow-round-up" item-left primary></ion-icon>
+      Todays High:       {{steem.high24hr}}
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="arrow-round-down" item-left primary></ion-icon>
+      Todays Low:       {{steem.low24hr}}
+    </ion-item>
+    <!--
+        <button ion-item>
+
+          STEEM on Bittrex
+        </button>
+
+
+        <button ion-item>
+
+          STEEM on Poloniex
+        </button>
+      -->
+  </ion-list>
+</ion-card>
+
+<ion-card>
+  <ion-card-header>
+    Steem Dollars
+  </ion-card-header>
+
+  <ion-list>
+    <button ion-item>
+      <ion-icon name="bitcoin" item-left primary></ion-icon>
+      BTC Price :{{sbdPrices.last}}
+    </button>
+
+    <!-- sometimes this shows as NaN value; partiularly on iOS -->
+    <ion-item>
+      <ion-icon name="cash" item-left primary></ion-icon>
+      Dollar Price:       {{sbdDollarVal |number:'.2'}}
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="arrow-round-up" item-left primary></ion-icon>
+      Todays High:       {{sbdPrices.high24hr}}
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="arrow-round-down" item-left primary></ion-icon>
+      Todays Low:       {{sbdPrices.low24hr}}
+    </ion-item>
+  <!--
+    <button ion-item >
+
+      STEEM on Bittrex
+    </button>
+
+    <button ion-item>
+
+      STEEM on Poloniex
+    </button>
+-->
+  </ion-list>
+</ion-card>
+
+
+
+</ion-content>
+
